@@ -21,7 +21,7 @@ const ProblemSection = () => {
                         </div>
                         <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-[1.1]">
                             El campo produce. <br />
-                            <span className="text-gray-500">El dinero se detiene.</span>
+                            <span className="text-gray-500">El banco pone las trabas.</span>
                         </h2>
                         <p className="text-xl text-gray-400 leading-relaxed mb-8">
                             Eres un productor de alto rendimiento, pero el sistema financiero te trata como un riesgo incalculable.

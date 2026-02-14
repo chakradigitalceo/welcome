@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logoxchakra.png';
 import { routeColors } from '../types/routes';
+import useBreakpoint from '../hooks/useBreakpoint';
 
 
 const Navbar = () => {
@@ -12,6 +13,7 @@ const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const location = useLocation();
     const shouldShowBg = scrolled || mobileMenuOpen;
+    const { isMobile } = useBreakpoint()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -28,14 +30,16 @@ const Navbar = () => {
         { name: 'Compradores', href: '/compradores' },
     ];
 
-    const activeBg = routeColors[location.pathname] || 'bg-chakra-bg';
+    const activeBg = isMobile
+        ? (routeColors[location.pathname] || 'bg-chakra-bg')
+        : 'bg-chakra-dark/55';
 
     return (
         <nav
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${shouldShowBg ? activeBg + ' backdrop-blur-md border-b border-white/10 py-3 shadow-lg' : 'bg-transparent py-6'
                 }`}
         >
-            <div className="container mx-auto px-6 flex items-center justify-between">
+            <div className="container mx-auto px-6 flex items-center justify-between gap-12">
                 {/* Logo */}
                 <Link to="/" className="w-full flex items-center gap-2 font-bold text-2xl text-white tracking-tighter hover:opacity-80 transition-opacity">
                     <img src={logo} alt="Logo" className="h-12" />

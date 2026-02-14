@@ -12,8 +12,8 @@ const MetricsSection = () => {
             <div className="container mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center relative z-10">
 
                 {[
-                    { val: "+100", label: "Hectáreas Financiadas" },
-                    { val: "98%", label: "Tasa de Repago" },
+                    { val: "+90", label: "Hectáreas Financiadas" },
+                    { val: "95%", label: "Tasa de Repago" },
                     { val: "$0", label: "Efectivo en Campo" },
                     { val: "100%", label: "Trazabilidad Digital" }
                 ].map((m, i) => (

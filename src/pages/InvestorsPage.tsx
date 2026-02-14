@@ -1,10 +1,61 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, TrendingUp, Shield, BarChart3, Satellite, PieChart, DollarSign } from 'lucide-react';
 import SEO from '../components/SEO';
+import { useState } from 'react';
+import Toast from '../components/Toast';
 
 const InvestorsPage = () => {
+
+    const [loading, setLoading] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const [formData, setFormData] = useState({
+        nombre: '',
+        email: '',
+        monto: ''
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const logData = {
+            fecha: new Date().toLocaleString(),
+            perfil: 'Inversionista (Landing)',
+            nombre_completo: formData.nombre,
+            email: formData.email,
+            monto_usd: formData.monto, // CAMPO ESPECÍFICO
+        };
+
+        try {
+            const response = await fetch('https://sheetdb.io/api/v1/g4hc3d01zv32n', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [logData] })
+            });
+
+            if (response.ok) {
+                setShowToast(true);
+                setFormData({ nombre: '', email: '', monto: '' });
+            }
+        } catch (error) {
+            console.error("Error log:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="bg-zinc-950 min-h-screen text-white font-sans">
+            <Toast
+                show={showToast}
+                onClose={() => setShowToast(false)}
+                message="Deck Informativo Enviado"
+                description="Gracias por tu interés. Hemos recibido tu solicitud y te contactaremos pronto."
+            />
             <SEO
                 title="Inversión Agrícola con Datos Satelitales | Retornos 12-18% TIR | Chakra"
                 description="Invierte en agricultura con datos, no con fe. Portafolios diversificados monitoreados 24/7 por satélite. Retornos de 12-18% anual con impacto social medible. Inversión en agro peruano."
@@ -233,24 +284,33 @@ const InvestorsPage = () => {
                         Mínimo de inversión: US$50,000. Plazo: 6-12 meses.
                     </p>
 
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <input
                             type="text"
+                            name='nombre'
+                            value={formData.nombre}
+                            onChange={handleChange}
                             placeholder="Nombre completo"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-chakra-blue transition-colors"
                         />
                         <input
                             type="email"
+                            name='email'
+                            value={formData.email}
+                            onChange={handleChange}
                             placeholder="Email corporativo"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-chakra-blue transition-colors"
                         />
                         <input
                             type="text"
+                            name='monto'
+                            value={formData.monto}
+                            onChange={handleChange}
                             placeholder="Monto a invertir (USD)"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-chakra-blue transition-colors"
                         />
-                        <button className="w-full px-10 py-5 bg-chakra-blue hover:bg-blue-700 text-white rounded-2xl font-bold text-lg transition-all shadow-2xl shadow-chakra-blue/30 hover:scale-105">
-                            Solicitar Información
+                        <button type='submit' disabled={loading} className="w-full px-10 py-5 bg-chakra-blue hover:bg-blue-700 text-white rounded-2xl font-bold text-lg transition-all shadow-2xl shadow-chakra-blue/30 hover:scale-105">
+                            {loading ? 'Procesando...' : 'Solicitar Información'}
                         </button>
                     </form>
 

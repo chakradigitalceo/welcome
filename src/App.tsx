@@ -5,10 +5,12 @@ import HomePage from './pages/HomePage';
 import InvestorsPage from './pages/InvestorsPage';
 import PartnersPage from './pages/PartnersPage';
 import BuyersPage from './pages/BuyersPage';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="bg-zinc-950 min-h-screen text-white font-sans selection:bg-green-500 selection:text-white">
         <Navbar />
 

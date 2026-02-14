@@ -20,7 +20,7 @@ const TestimonialsSection = () => {
                     {[
                         {
                             role: "Productor de Arroz",
-                            name: "Juan Pérez",
+                            name: "Hernesto Benavides",
                             text: "Antes pasaba meses rogando por crédito. Con Chakra, mi historial satelital habló por mí. Aprobado en 48 horas.",
                             loc: "Lambayeque, Perú"
                         },

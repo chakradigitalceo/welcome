@@ -1,10 +1,68 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Package, Clock, ShieldCheck, Truck, BarChart3, Leaf } from 'lucide-react';
 import SEO from '../components/SEO';
+import { useState } from 'react';
+import Toast from '../components/Toast';
 
 const BuyersPage = () => {
+
+    const [loading, setLoading] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const [formData, setFormData] = useState({
+        empresa: '',
+        contacto: '',
+        email: '',
+        cultivo: '',
+        volumen: ''
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        // Homologamos la data para el Excel único
+        const logData = {
+            fecha: new Date().toLocaleString(),
+            perfil: 'Comprador',
+            nombre_empresa: formData.empresa,
+            nombre_contacto: formData.contacto,
+            email: formData.email,
+            cultivo: formData.cultivo,
+            volumen_mensual: formData.volumen,
+            // Los demás campos se enviarán vacíos automáticamente al Sheet
+        };
+
+        try {
+            const response = await fetch('https://sheetdb.io/api/v1/g4hc3d01zv32n', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [logData] })
+            });
+
+            if (response.ok) {
+                setShowToast(true);
+                setFormData({ empresa: '', contacto: '', email: '', cultivo: '', volumen: '' });
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
     return (
         <div className="bg-zinc-950 min-h-screen text-white font-sans">
+            <Toast
+                show={showToast}
+                onClose={() => setShowToast(false)}
+                message="Solicitud Recibida"
+                description="Un especialista en abastecimiento te contactará en las próximas 24 horas para continuar con tu solicitud."
+            />
             <SEO
                 title="Abastecimiento Agrícola Garantizado | Contratos Forward | Chakra"
                 description="Asegura tu abastecimiento antes de la siembra. Contratos forward con productores financiados, calidad certificada, trazabilidad satelital. Ideal para agroexportadoras, retail y mercados mayoristas."
@@ -328,34 +386,49 @@ const BuyersPage = () => {
                         Cuéntanos qué necesitas y te conectamos con productores certificados.
                     </p>
 
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <input
                             type="text"
+                            name='empresa'
+                            value={formData.empresa}
+                            onChange={handleChange}
                             placeholder="Nombre de la empresa"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
                         />
                         <input
                             type="text"
+                            name='contacto'
+                            value={formData.contacto}
+                            onChange={handleChange}
                             placeholder="Nombre del contacto"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
                         />
                         <input
                             type="email"
+                            name='email'
+                            value={formData.email}
+                            onChange={handleChange}
                             placeholder="Email corporativo"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
                         />
                         <input
                             type="text"
+                            name='cultivo'
+                            value={formData.cultivo}
+                            onChange={handleChange}
                             placeholder="Tipo de cultivo que necesitas"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
                         />
                         <input
                             type="text"
+                            name='volumen'
+                            value={formData.volumen}
+                            onChange={handleChange}
                             placeholder="Volumen mensual aproximado (toneladas)"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
                         />
-                        <button className="w-full px-10 py-5 bg-purple-600 hover:bg-purple-700 text-white rounded-2xl font-bold text-lg transition-all shadow-2xl shadow-purple-600/30 hover:scale-105">
-                            Solicitar Información
+                        <button type='submit' disabled={loading} className="w-full px-10 py-5 bg-purple-600 hover:bg-purple-700 text-white rounded-2xl font-bold text-lg transition-all shadow-2xl shadow-purple-600/30 hover:scale-105">
+                            {loading ? 'Procesando...' : 'Solicitar Información'}
                         </button>
                     </form>
 

@@ -1,10 +1,66 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Store, TrendingUp, Users, ShoppingBag, Truck, DollarSign, BarChart } from 'lucide-react';
 import SEO from '../components/SEO';
+import { useState } from 'react';
+import Toast from '../components/Toast';
 
 const PartnersPage = () => {
+
+    const [loading, setLoading] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const [formData, setFormData] = useState({
+        comercio: '',
+        propietario: '',
+        email: '',
+        whatsapp: '',
+        ubicacion: ''
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        // Homologación de datos para el Excel único
+        const logData = {
+            fecha: new Date().toLocaleString(),
+            perfil: 'Aliado Comercial',
+            nombre_empresa: formData.comercio,    // Se mapea a la columna de empresa
+            nombre_contacto: formData.propietario, // Se mapea a la columna de contacto
+            email: formData.email,
+            whatsapp: formData.whatsapp,
+            ubicacion: formData.ubicacion         // NUEVO CAMPO
+        };
+
+        try {
+            const response = await fetch('https://sheetdb.io/api/v1/g4hc3d01zv32n', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [logData] })
+            });
+
+            if (response.ok) {
+                setShowToast(true);
+                setFormData({ comercio: '', propietario: '', email: '', whatsapp: '', ubicacion: '' });
+            }
+        } catch (error) {
+            console.error("Error al registrar aliado:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="bg-zinc-950 min-h-screen text-white font-sans">
+            <Toast
+                show={showToast}
+                onClose={() => setShowToast(false)}
+                message="¡Inscripción Exitosa!"
+                description="Un ejecutivo comercial te contactará en las próximas 24 horas para validar tu comercio."
+            />
             <SEO
                 title="Red de Aliados Comerciales Agrícolas | Tiendas de Fertilizantes | Chakra"
                 description="Convierte tu agroservicio en un punto de crédito Chakra. Tráfico garantizado, pago inmediato, cero riesgo de cartera vencida. Ideal para tiendas de fertilizantes, semillas e insumos agrícolas."
@@ -236,34 +292,49 @@ const PartnersPage = () => {
                         Inscripción gratuita. Aprobación en menos de 48 horas.
                     </p>
 
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <input
                             type="text"
+                            name='comercio'
+                            value={formData.comercio}
+                            onChange={handleChange}
                             placeholder="Nombre del comercio"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
                         />
                         <input
                             type="text"
+                            name='propietario'
+                            value={formData.propietario}
+                            onChange={handleChange}
                             placeholder="Nombre del propietario"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
                         />
                         <input
                             type="email"
+                            name='email'
+                            value={formData.email}
+                            onChange={handleChange}
                             placeholder="Email"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
                         />
                         <input
                             type="tel"
+                            name='whatsapp'
+                            value={formData.whatsapp}
+                            onChange={handleChange}
                             placeholder="Teléfono / WhatsApp"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
                         />
                         <input
                             type="text"
+                            name='ubicacion'
+                            value={formData.ubicacion}
+                            onChange={handleChange}
                             placeholder="Ubicación (ciudad, región)"
                             className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
                         />
-                        <button className="w-full px-10 py-5 bg-orange-500 hover:bg-orange-600 text-white rounded-2xl font-bold text-lg transition-all shadow-2xl shadow-orange-500/30 hover:scale-105">
-                            Inscribir mi Comercio
+                        <button type='submit' disabled={loading} className="w-full px-10 py-5 bg-orange-500 hover:bg-orange-600 text-white rounded-2xl font-bold text-lg transition-all shadow-2xl shadow-orange-500/30 hover:scale-105">
+                            {loading ? 'Procesando...' : 'Inscribir mi Comercio'}
                         </button>
                     </form>
 
