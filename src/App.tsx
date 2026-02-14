@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import InvestorsPage from './pages/InvestorsPage';
 import PartnersPage from './pages/PartnersPage';
 import BuyersPage from './pages/BuyersPage';
+import TechnologyPage from './pages/TechnologyPage';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/inversionistas" element={<InvestorsPage />} />
           <Route path="/aliados" element={<PartnersPage />} />
           <Route path="/compradores" element={<BuyersPage />} />
+          <Route path="/tecnologia" element={<TechnologyPage />} />
         </Routes>
 
         <Footer />

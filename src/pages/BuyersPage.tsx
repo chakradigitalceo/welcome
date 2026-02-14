@@ -283,7 +283,7 @@ const BuyersPage = () => {
                         {[
                             { value: "1,240", label: "Toneladas Entregadas" },
                             { value: "98.5%", label: "Tasa de Cumplimiento" },
-                            { value: "15", label: "Agroexportadoras Activas" },
+                            { value: "4", label: "Agroindustrias Activas" },
                             { value: "-22%", label: "Reducción de Costos" }
                         ].map((metric, i) => (
                             <motion.div

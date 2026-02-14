@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import logo from '../assets/logoxchakra.png';
 
 const Footer = () => {
     return (
         <footer className="bg-black border-t border-white/5 py-12 text-gray-500 text-sm relative">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-chakra-blue via-chakra-leaf to-amber-400"></div>
+            {/* <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-chakra-blue via-chakra-leaf to-amber-400"></div> */}
 
             <div className="container mx-auto px-6 grid md:grid-cols-4 gap-8">
                 <div>
@@ -23,10 +24,11 @@ const Footer = () => {
                 <div>
                     <h4 className="text-white font-bold mb-6 tracking-wide uppercase text-xs">Plataforma</h4>
                     <ul className="space-y-3">
-                        <li><a href="#" className="hover:text-chakra-leaf transition-colors">Para Inversionistas</a></li>
-                        <li><a href="#" className="hover:text-chakra-leaf transition-colors">Para Agricultores</a></li>
-                        <li><a href="#" className="hover:text-chakra-leaf transition-colors">Red de Aliados</a></li>
-                        <li><a href="#" className="hover:text-chakra-leaf transition-colors">Tecnología</a></li>
+                        <li><Link to="/inversionistas" className="hover:text-chakra-leaf transition-colors">Para Inversionistas</Link></li>
+                        <li><Link to="/" className="hover:text-chakra-leaf transition-colors">Para Agricultores</Link></li>
+                        <li><Link to="/aliados" className="hover:text-chakra-leaf transition-colors">Red de Aliados</Link></li>
+                        <li><Link to="/compradores" className="hover:text-chakra-leaf transition-colors">Para Compradores</Link></li>
+                        <li><Link to="/tecnologia" className="hover:text-chakra-leaf transition-colors">Tecnología</Link></li>
                     </ul>
                 </div>
 
@@ -46,7 +48,7 @@ const Footer = () => {
                     <p className="mt-2 text-xs opacity-60">Av. Huascar, La Libertad, Perú</p>
                 </div>
             </div>
-            <div className="text-center mt-12 pt-8 border-t border-white/5 text-xs opacity-40">
+            <div className="text-center mt-12 pt-8 border-t border-white/80 text-xs opacity-95">
                 &copy; {new Date().getFullYear()} Chakra Financial Technologies Inc. Todos los derechos reservados.
             </div>
         </footer>

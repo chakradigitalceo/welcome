@@ -28,6 +28,7 @@ const Navbar = () => {
         { name: 'Inversionistas', href: '/inversionistas' },
         { name: 'Aliados', href: '/aliados' },
         { name: 'Compradores', href: '/compradores' },
+        { name: 'Tecnología', href: '/tecnologia' },
     ];
 
     const activeBg = isMobile
@@ -63,10 +64,10 @@ const Navbar = () => {
 
                 {/* CTA */}
                 <div className="hidden md:flex items-center gap-4">
-                    <button className="text-sm font-medium text-white hover:text-chakra-leaf transition-colors">
+                    {/* <button className="text-sm font-medium text-white hover:text-chakra-leaf transition-colors">
                         Ingresar
-                    </button>
-                    <button className="bg-chakra-white text-chakra-bg px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border border-transparent hover:border-chakra-leaf/20">
+                    </button> */}
+                    <button className="bg-chakra-white text-nowrap text-chakra-bg px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border border-transparent hover:border-chakra-leaf/20">
                         Empezar Ahora
                     </button>
                 </div>

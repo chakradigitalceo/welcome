@@ -224,7 +224,7 @@ const PartnersPage = () => {
                     <h2 className="text-3xl lg:text-5xl font-bold mb-16 text-white">Resultados de Nuestros Aliados</h2>
                     <div className="grid md:grid-cols-4 gap-8">
                         {[
-                            { value: "127", label: "Comercios Activos" },
+                            { value: "7", label: "Comercios Activos" },
                             { value: "+40%", label: "Incremento en Ventas" },
                             { value: "0%", label: "Cartera Vencida" },
                             { value: "48h", label: "Tiempo de Pago" }

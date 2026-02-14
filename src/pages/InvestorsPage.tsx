@@ -57,8 +57,8 @@ const InvestorsPage = () => {
                 description="Gracias por tu interés. Hemos recibido tu solicitud y te contactaremos pronto."
             />
             <SEO
-                title="Inversión Agrícola con Datos Satelitales | Retornos 12-18% TIR | Chakra"
-                description="Invierte en agricultura con datos, no con fe. Portafolios diversificados monitoreados 24/7 por satélite. Retornos de 12-18% anual con impacto social medible. Inversión en agro peruano."
+                title="Inversión Agrícola con Datos Satelitales | Retornos 6-11% TIR | Chakra"
+                description="Invierte en agricultura con datos, no con fe. Portafolios diversificados monitoreados 24/7 por satélite. Retornos de 6-11% anual con impacto social medible. Inversión en agro peruano."
                 keywords="inversión agrícola, invertir en agricultura, inversión agro, agtech inversión, inversión impacto social, inversión sostenible, retorno inversión agrícola, fondos agrícolas, inversión cultivos, tecnología agrícola inversión, monitoreo satelital inversión, diversificación portafolio, inversión alternativa, inversión real assets, agricultura de precisión inversión, agribusiness inversión, venture capital agro, private equity agricultura"
                 themeColor="#2234BC"
             />
@@ -82,8 +82,8 @@ const InvestorsPage = () => {
                             transition={{ duration: 0.6 }}
                         >
                             <div className="inline-flex items-center space-x-2 bg-chakra-blue/25 border border-chakra-blue/50 rounded-full px-4 py-2 backdrop-blur-md mb-8">
-                                <PieChart className="w-4 h-4 text-chakra-blue" />
-                                <span className="text-sm font-semibold tracking-wide text-chakra-blue">Inversión de Impacto + Retorno Predecible</span>
+                                <PieChart className="w-4 h-4 text-blue-500" />
+                                <span className="text-sm font-semibold tracking-wide text-blue-500">Inversión de Impacto + Retorno Predecible</span>
                             </div>
 
                             <h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-8">
@@ -93,7 +93,7 @@ const InvestorsPage = () => {
 
                             <p className="text-xl lg:text-2xl text-gray-300 max-w-2xl leading-relaxed mb-12">
                                 Portafolios diversificados, monitoreados 24/7 por satélite. <br className="hidden lg:block" />
-                                Retornos de 12-18% anual con impacto social medible.
+                                Retornos de 6-11% anual con impacto social medible.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
@@ -110,7 +110,7 @@ const InvestorsPage = () => {
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <TrendingUp className="w-5 h-5 text-chakra-blue" />
-                                    <span>12-18% TIR</span>
+                                    <span>6-11% TIR</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <BarChart3 className="w-5 h-5 text-chakra-blue" />
