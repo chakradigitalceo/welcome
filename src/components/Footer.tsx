@@ -1,3 +1,4 @@
+import logo from '../assets/logoxchakra.png';
 
 const Footer = () => {
     return (
@@ -7,8 +8,7 @@ const Footer = () => {
             <div className="container mx-auto px-6 grid md:grid-cols-4 gap-8">
                 <div>
                     <div className="flex items-center gap-2 mb-4 text-white font-bold text-xl">
-                        <div className="w-8 h-8 rounded-lg bg-chakra-leaf flex items-center justify-center text-white">C</div>
-                        Chakra
+                        <img src={logo} alt="Logo" className="h-12" />
                     </div>
                     <p className="leading-relaxed mb-6 text-gray-400">
                         Impulsando el agro con capital inteligente y datos satelitales.
@@ -43,7 +43,7 @@ const Footer = () => {
                     <h4 className="text-white font-bold mb-6 tracking-wide uppercase text-xs">Contacto</h4>
                     <p className="mb-2 hover:text-white transition-colors cursor-pointer">soporte@chakra.fin</p>
                     <p className="mb-4 hover:text-white transition-colors cursor-pointer">+51 973001933</p>
-                    <p className="mt-2 text-xs opacity-60">Av. Shyris y Suecia, Quito, Ecuador</p>
+                    <p className="mt-2 text-xs opacity-60">Av. Huascar, La Libertad, Perú</p>
                 </div>
             </div>
             <div className="text-center mt-12 pt-8 border-t border-white/5 text-xs opacity-40">

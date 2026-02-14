@@ -1,67 +1,116 @@
 
 import { motion } from 'framer-motion';
-import { ScanEye, Wallet, Store, ArrowRight } from 'lucide-react';
+import { ScanEye, Wallet, Store, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const SolutionSection = () => {
     return (
-        <section className="py-24 bg-chakra-bg relative overflow-hidden">
+        <section className="py-24 bg-zinc-50 relative overflow-hidden text-zinc-900">
 
-            {/* Background Blob */}
-            <div className="absolute top-1/2 left-0 w-96 h-96 bg-chakra-leaf/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none"></div>
+            {/* Subtle textured background */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
 
-            <div className="container mx-auto px-6 grid lg:grid-cols-3 gap-8">
+            <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
 
-                <div className="lg:col-span-3 text-center mb-12">
-                    <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-chakra-leaf uppercase bg-green-900/10 rounded-full border border-green-900/30">
-                        Propuesta de Valor
+                {/* Left Side: Editorial Content */}
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-chakra-leaf uppercase bg-green-100 rounded-full border border-green-200">
+                        Nuestra Fórmula
                     </div>
-                    <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white leading-tight">
-                        La infraestructura que el <br />agro estaba esperando.
+                    <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-zinc-900 leading-tight tracking-tight">
+                        Infraestructura <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-chakra-leaf to-emerald-600">Financiera Real.</span>
                     </h2>
-                </div>
+                    <p className="text-zinc-600 text-lg mb-8 leading-relaxed max-w-md">
+                        Combinamos tecnología satelital y capital estructurado para crear un ecosistema donde todos ganan. Sin fricción.
+                    </p>
 
-                {[
-                    {
-                        icon: <ScanEye className="w-10 h-10 text-emerald-400" />,
-                        title: "Ojos en el Cielo",
-                        desc: "Análisis satelital (NDVI/EVI) para medir salud del cultivo y predecir toneladas.",
-                        color: "group-hover:text-emerald-400"
-                    },
-                    {
-                        icon: <Wallet className="w-10 h-10 text-chakra-blue" />,
-                        title: "Billetera Digital",
-                        desc: "Crédito desembolsado por hitos productivos directamente a proveedores.",
-                        color: "group-hover:text-chakra-blue"
-                    },
-                    {
-                        icon: <Store className="w-10 h-10 text-orange-400" />,
-                        title: "Red Comercial",
-                        desc: "Unimos agricultores con compradores industriales para asegurar la venta.",
-                        color: "group-hover:text-orange-400"
-                    }
-                ].map((item, index) => (
+                    <div className="space-y-4">
+                        {[
+                            "Aprobación basada en datos, no en papeles.",
+                            "Desembolsos inteligentes por hitos de cultivo.",
+                            "Venta asegurada con compradores industriales."
+                        ].map((item, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, x: -10 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.2 + (i * 0.1) }}
+                                className="flex items-center gap-3"
+                            >
+                                <div className="w-6 h-6 rounded-full bg-chakra-leaf/10 flex items-center justify-center">
+                                    <CheckCircle2 className="w-4 h-4 text-chakra-leaf" />
+                                </div>
+                                <span className="font-medium text-zinc-700">{item}</span>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <button className="mt-10 px-8 py-4 bg-zinc-900 text-white rounded-full font-semibold hover:bg-zinc-800 transition-all flex items-center gap-2 shadow-xl shadow-zinc-900/10 group">
+                        Conocer más
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                </motion.div>
+
+                {/* Right Side: Bento Grid Cards */}
+                <div className="grid gap-6">
                     <motion.div
-                        key={index}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ margin: "-100px", once: true }}
-                        className="bg-white/5 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:bg-white/10 transition-all hover:-translate-y-2 group cursor-pointer relative overflow-hidden"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="bg-white p-8 rounded-3xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-zinc-100 hover:border-emerald-100 hover:shadow-emerald-500/10 transition-all duration-500 group relative overflow-hidden"
                     >
-                        <div className="bg-black/40 w-20 h-20 rounded-2xl flex items-center justify-center mb-6 border border-white/5 shadow-inner">
-                            {item.icon}
+                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-700 origin-top-right">
+                            <ScanEye className="w-32 h-32 text-chakra-leaf" />
                         </div>
-                        <h3 className={`text-2xl font-bold text-white mb-4 transition-colors ${item.color}`}>{item.title}</h3>
-                        <p className="text-gray-400 leading-relaxed text-lg mb-8">
-                            {item.desc}
+                        <div className="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center mb-6 text-emerald-600">
+                            <ScanEye className="w-7 h-7" />
+                        </div>
+                        <h3 className="text-xl font-bold text-zinc-900 mb-2">Visibilidad Total</h3>
+                        <p className="text-zinc-500 leading-relaxed">
+                            Monitoreo satelital constante (NDVI/EVI). Vemos lo que pasa en el campo antes que nadie.
                         </p>
-                        <div className="flex items-center text-sm font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-300">
-                            Ver más <ArrowRight className="w-4 h-4 ml-2" />
-                        </div>
-
-                        {/* Hover Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     </motion.div>
-                ))}
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                            className="bg-white p-8 rounded-3xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-zinc-100 hover:border-blue-100 hover:shadow-blue-500/10 transition-all duration-500 group"
+                        >
+                            <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-6 text-chakra-blue group-hover:rotate-6 transition-transform">
+                                <Wallet className="w-7 h-7" />
+                            </div>
+                            <h3 className="text-xl font-bold text-zinc-900 mb-2">Liquidez</h3>
+                            <p className="text-zinc-500 text-sm leading-relaxed">
+                                Crédito revolvente automático.
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4 }}
+                            className="bg-zinc-900 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 group text-white relative overflow-hidden"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-tr from-chakra-leaf/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 text-white group-hover:-translate-y-1 transition-transform">
+                                <Store className="w-7 h-7" />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2 relative z-10">Comercio</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed relative z-10">
+                                Conexión directa al mercado.
+                            </p>
+                        </motion.div>
+                    </div>
+                </div>
 
             </div>
         </section>

@@ -12,7 +12,7 @@ const LeadFormSection = () => {
     ];
 
     return (
-        <section className="py-24 bg-gradient-to-t from-black to-chakra-bg relative overflow-hidden" id="contacto">
+        <section id="registro" className="py-24 bg-gradient-to-br from-zinc-950 to-black relative overflow-hidden border-t border-white/5">
             {/* Decorative background */}
             <div className="absolute inset-0 bg-chakra-leaf/5 mix-blend-overlay pointer-events-none"></div>
 

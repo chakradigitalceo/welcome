@@ -2,10 +2,13 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/logoxchakra.png';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -16,10 +19,10 @@ const Navbar = () => {
     }, []);
 
     const links = [
-        { name: 'Inversionistas', href: '#inversionistas' },
-        { name: 'Productores', href: '#agricultores' },
-        { name: 'Aliados', href: '#aliados' },
-        { name: 'Tecnología', href: '#tecnologia' },
+        { name: 'Productores', href: '/' },
+        { name: 'Inversionistas', href: '/inversionistas' },
+        { name: 'Aliados', href: '/aliados' },
+        { name: 'Compradores', href: '/compradores' },
     ];
 
     return (
@@ -29,24 +32,23 @@ const Navbar = () => {
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
-                <div className="flex items-center gap-2 font-bold text-2xl text-white tracking-tighter">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-chakra-leaf to-green-700 flex items-center justify-center text-white shadow-lg shadow-green-900/50">
-                        C
-                    </div>
-                    Chakra
-                </div>
+                <Link to="/" className="w-full flex items-center gap-2 font-bold text-2xl text-white tracking-tighter hover:opacity-80 transition-opacity">
+                    <img src={logo} alt="Logo" className="h-12" />
+                </Link>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-8">
                     {links.map(link => (
-                        <a
+                        <Link
                             key={link.name}
-                            href={link.href}
-                            className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group"
+                            to={link.href}
+                            className={`text-sm font-medium transition-colors relative group ${location.pathname === link.href ? 'text-white' : 'text-gray-300 hover:text-white'
+                                }`}
                         >
                             {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-chakra-leaf transition-all group-hover:w-full"></span>
-                        </a>
+                            <span className={`absolute -bottom-1 left-0 h-0.5 bg-chakra-leaf transition-all ${location.pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                                }`}></span>
+                        </Link>
                     ))}
                 </div>
 
@@ -80,18 +82,18 @@ const Navbar = () => {
                     >
                         <div className="flex flex-col p-6 space-y-4">
                             {links.map(link => (
-                                <a
+                                <Link
                                     key={link.name}
-                                    href={link.href}
+                                    to={link.href}
                                     className="text-lg font-medium text-gray-300 hover:text-white border-b border-white/5 pb-2"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {link.name}
-                                </a>
+                                </Link>
                             ))}
-                            <button className="w-full bg-chakra-leaf text-white py-3 rounded-lg font-bold shadow-lg shadow-green-900/20 mt-4">
+                            <a href="#registro" className="w-full bg-chakra-leaf text-white py-3 rounded-lg font-bold shadow-lg shadow-green-900/20 mt-4 text-center block">
                                 Crear Cuenta
-                            </button>
+                            </a>
                             <button className="w-full text-gray-400 py-3 text-sm">
                                 Ya tengo cuenta
                             </button>
