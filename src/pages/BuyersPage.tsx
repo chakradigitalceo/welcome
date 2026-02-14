@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Package, Clock, ShieldCheck, Truck, BarChart3, Leaf } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const BuyersPage = () => {
     return (
         <div className="bg-zinc-950 min-h-screen text-white font-sans">
+            <SEO
+                title="Abastecimiento Agrícola Garantizado | Contratos Forward | Chakra"
+                description="Asegura tu abastecimiento antes de la siembra. Contratos forward con productores financiados, calidad certificada, trazabilidad satelital. Ideal para agroexportadoras, retail y mercados mayoristas."
+                keywords="abastecimiento agrícola, contratos forward agricultura, compra directa productores, agroexportación, mercado mayorista, retail agrícola, trazabilidad agrícola, calidad certificada agricultura, logística agrícola, compra arroz, compra maíz, compra soya, off-taker agrícola, industria alimentaria, certificación GlobalGAP, agricultura orgánica, supply chain agrícola"
+                themeColor="#9333ea"
+            />
 
             {/* Hero Section */}
             <section className="relative min-h-screen w-full overflow-hidden bg-zinc-950 text-white flex items-center">

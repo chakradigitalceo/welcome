@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Store, TrendingUp, Users, ShoppingBag, Truck, DollarSign, BarChart } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const PartnersPage = () => {
     return (
         <div className="bg-zinc-950 min-h-screen text-white font-sans">
+            <SEO
+                title="Red de Aliados Comerciales Agrícolas | Tiendas de Fertilizantes | Chakra"
+                description="Convierte tu agroservicio en un punto de crédito Chakra. Tráfico garantizado, pago inmediato, cero riesgo de cartera vencida. Ideal para tiendas de fertilizantes, semillas e insumos agrícolas."
+                keywords="tiendas agrícolas, agroservicios, tiendas fertilizantes, venta fertilizantes, venta semillas, insumos agrícolas, distribuidores agrícolas, comercio agrícola, red de aliados agrícolas, punto de venta agrícola, crédito para agroservicios, financiamiento tiendas agrícolas, cartera vencida agricultura, pago garantizado, tráfico clientes agrícolas"
+                themeColor="#f97316"
+            />
             {/* Hero Section */}
             <section className="relative min-h-screen w-full overflow-hidden bg-zinc-950 text-white flex items-center">
                 <div className="absolute inset-0 z-0">

@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, TrendingUp, Shield, BarChart3, Satellite, PieChart, DollarSign } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const InvestorsPage = () => {
     return (
         <div className="bg-zinc-950 min-h-screen text-white font-sans">
+            <SEO
+                title="Inversión Agrícola con Datos Satelitales | Retornos 12-18% TIR | Chakra"
+                description="Invierte en agricultura con datos, no con fe. Portafolios diversificados monitoreados 24/7 por satélite. Retornos de 12-18% anual con impacto social medible. Inversión en agro peruano."
+                keywords="inversión agrícola, invertir en agricultura, inversión agro, agtech inversión, inversión impacto social, inversión sostenible, retorno inversión agrícola, fondos agrícolas, inversión cultivos, tecnología agrícola inversión, monitoreo satelital inversión, diversificación portafolio, inversión alternativa, inversión real assets, agricultura de precisión inversión, agribusiness inversión, venture capital agro, private equity agricultura"
+                themeColor="#2234BC"
+            />
             {/* Hero Section */}
             <section className="relative min-h-screen w-full overflow-hidden bg-zinc-950 text-white flex items-center">
                 <div className="absolute inset-0 z-0">

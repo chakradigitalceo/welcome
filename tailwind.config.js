@@ -13,6 +13,8 @@ export default {
           leaf: '#45BE55',
           bg: '#00261B', // Bottle green
           dark: '#001a12', // Slightly darker variant for contrast
+          aliados: '#f97316',   // Naranja (Aliados)
+          compradores: '#9333ea', // Púrpura (Compradores)
         },
       },
       fontFamily: {

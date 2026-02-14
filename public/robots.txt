@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://chakra.fin/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin or internal pages (if any in future)
+# Disallow: /admin/
+# Disallow: /api/

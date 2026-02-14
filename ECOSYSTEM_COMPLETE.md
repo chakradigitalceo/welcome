@@ -98,10 +98,10 @@ INVERSIONISTAS                CHAKRA                    PRODUCTORES
 
 ```css
 /* Productores */
---chakra-leaf: #10b981 (green-500)
+--chakra-leaf: #00261B (green-500)
 
 /* Inversionistas */
---chakra-blue: #3b82f6 (blue-500)
+--chakra-blue: #2234BC (blue-500)
 
 /* Aliados */
 --chakra-orange: #f97316 (orange-500)

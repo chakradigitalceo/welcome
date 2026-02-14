@@ -15,6 +15,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --chakra-blue: rgba(34, 52, 188);
+  /* #2234BC en formato R G B */
+  --chakra-bg: rgba(0, 38, 27);
+  /* #00261B en formato R G B */
+  --chakra-aliados: rgba(249, 115, 22);
+  /* #f97316 en formato R G B */
+  --chakra-compradores: rgba(147, 51, 234);
+  /* #9333ea en formato R G B */
+  --chakra-leaf: rgba(69, 190, 85);
+  /* #45BE55 en formato R G B */
 }
 
 body {
