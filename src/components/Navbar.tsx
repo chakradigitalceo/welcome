@@ -67,9 +67,9 @@ const Navbar = () => {
                     {/* <button className="text-sm font-medium text-white hover:text-chakra-leaf transition-colors">
                         Ingresar
                     </button> */}
-                    <button className="bg-chakra-white text-nowrap text-chakra-bg px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border border-transparent hover:border-chakra-leaf/20">
+                    <Link to="/scoring"className="bg-chakra-white text-nowrap text-chakra-bg px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 border border-transparent hover:border-chakra-leaf/20">
                         Empezar Ahora
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Mobile Menu Button */}

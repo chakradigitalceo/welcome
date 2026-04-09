@@ -17,7 +17,9 @@ const Footer = () => {
                     <div className="flex gap-4">
                         {/* Socials placeholder */}
                         <div className="w-10 h-10 rounded-full bg-white/5 hover:bg-chakra-leaf hover:text-white transition-colors flex items-center justify-center cursor-pointer border border-white/10">X</div>
-                        <div className="w-10 h-10 rounded-full bg-white/5 hover:bg-chakra-blue hover:text-white transition-colors flex items-center justify-center cursor-pointer border border-white/10">in</div>
+                        <div className="w-10 h-10 rounded-full bg-white/5 hover:bg-chakra-blue hover:text-white transition-colors flex items-center justify-center cursor-pointer border border-white/10">
+                        <a href="https://www.linkedin.com/company/tuchakra" target="_blank" rel="noopener noreferrer"> in</a>
+                        </div>
                     </div>
                 </div>
 

@@ -6,6 +6,7 @@ import InvestorsPage from './pages/InvestorsPage';
 import PartnersPage from './pages/PartnersPage';
 import BuyersPage from './pages/BuyersPage';
 import TechnologyPage from './pages/TechnologyPage';
+import ScoringPage from './pages/ScoringPage';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/aliados" element={<PartnersPage />} />
           <Route path="/compradores" element={<BuyersPage />} />
           <Route path="/tecnologia" element={<TechnologyPage />} />
+          <Route path="/scoring" element={<ScoringPage />} />
         </Routes>
 
         <Footer />
