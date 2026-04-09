@@ -29,6 +29,7 @@ const Navbar = () => {
         { name: 'Aliados', href: '/aliados' },
         { name: 'Compradores', href: '/compradores' },
         { name: 'Tecnología', href: '/tecnologia' },
+        { name: 'Empezar ahora', href: '/scoring' },
     ];
 
     const activeBg = isMobile
